@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17030129908"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17030129908');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solar Cancel Check – Check Your Eligibility</title>
@@ -240,6 +231,51 @@
     .urgency { font-size: 13px; padding: 9px 14px; text-align: left; }
   }
 </style>
+
+<!-- Google Ads Global Tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17030129908"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17030129908');
+</script>
+
+<!-- gclid Capture + HasOffers Link Builder -->
+<script>
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name) || '';
+  }
+  function setCookie(name, value, days) {
+    var d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/';
+  }
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    return v ? v[2] : '';
+  }
+
+  var gclid = getParam('gclid');
+  if (gclid) {
+    setCookie('gclid', gclid, 30);
+  } else {
+    gclid = getCookie('gclid');
+  }
+
+  var baseUrl = 'https://1.lmediahome.com/aff_c?offer_id=7250&aff_id=1724';
+  var offerUrl = gclid ? baseUrl + '&aff_sub=' + encodeURIComponent(gclid) : baseUrl;
+
+  window.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('cta-btn');
+    if (btn) btn.href = offerUrl;
+  });
+
+  function handleCTA(e) {
+    e.preventDefault();
+    window.location = offerUrl;
+  }
+</script>
 </head>
 <body>
 
@@ -272,7 +308,7 @@
 
     <div class="cta-card">
       <p>Find out if you can cancel your solar contract.<br>Takes less than 30 seconds.</p>
-      <a href="YOUR_OFFER_URL_HERE" class="cta-btn">
+      <a href="#" id="cta-btn" class="cta-btn" onclick="handleCTA(event)">
         CHECK MY ELIGIBILITY →
       </a>
       <p class="cta-sub">🔒 Free to check. No lawyers needed. No penalties.</p>
